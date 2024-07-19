@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require ('cors');
 const dotenv = require('dotenv')
 import connectDB = require('./config/db');
-
+const userRoutes = require('./routes/userRoutes')
 
 // Load environment variables from .env file
 dotenv.config();
@@ -19,6 +19,7 @@ app.use(cors());
 // Parse JSON request bodies
 app.use(express.json());
 
+app.use('/api/user',userRoutes);
 
 
 const PORT = process.env.PORT || 3000;
@@ -26,6 +27,6 @@ app.get('/', (req :Request, res : Response) => {
     res.send('Hi there');
 });
 
-app.listen(3000, () => {
-    console.log(`Server is listening on port ${3000}`);
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}`);
 });
