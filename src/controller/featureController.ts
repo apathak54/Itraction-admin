@@ -3,16 +3,19 @@ import FeaturedWork, { IFeaturedWork } from '../models/featureModel';
 
 // Create new featured work
 export const createFeaturedWork = async (req: Request, res: Response) => {
-  const { image, description, mobileViewImages, laptopViewImages, brandImages, imageType } = req.body;
+  const { image,metadataimage , title , description, mobileViewImages, laptopViewImages, brandImages, imageType , websiteUrl } = req.body;
 
   try {
     const newFeaturedWork: IFeaturedWork = new FeaturedWork({
       image,
+      metadataimage ,
+      title ,
       description,
       mobileViewImages,
       laptopViewImages,
       brandImages,
       imageType,
+      websiteUrl 
     });
 
     await newFeaturedWork.save();
@@ -47,12 +50,12 @@ export const getFeaturedWorkById = async (req: Request, res: Response) => {
 
 // Update featured work by ID
 export const updateFeaturedWork = async (req: Request, res: Response) => {
-  const { image, description, mobileViewImages, laptopViewImages, brandImages, imageType } = req.body;
+  const { image, metadataimage , title ,description, mobileViewImages, laptopViewImages, brandImages, imageType ,websiteUrl} = req.body;
 
   try {
     const updatedFeaturedWork = await FeaturedWork.findByIdAndUpdate(
       req.params.id,
-      { image, description, mobileViewImages, laptopViewImages, brandImages, imageType },
+      { image, metadataimage ,title , description, mobileViewImages, laptopViewImages, brandImages, imageType ,websiteUrl},
       { new: true }
     );
 
