@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 import connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes')
 const featureRoutes = require('./routes/featureRoutes')
+const testimonialsRoutes = require('./routes/testinomialRoutes')
 // Load environment variables from .env file
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 
 app.use('/api/user',userRoutes);
 app.use('/api/featured-work', featureRoutes); 
+app.use('/api/testinomials',testimonialsRoutes)
 
 
 const PORT = process.env.PORT || 3000;
